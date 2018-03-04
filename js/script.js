@@ -1,9 +1,8 @@
-// 'New game' button listener
+// EVENT LISTENERS
 var newGameBtn = document.getElementById('js-newGameButton');
 
 newGameBtn.addEventListener('click', newGame);
 
-// Player's 'Pick' buttons listeners
 var pickRock = document.getElementById('js-playerPick_rock'),
     pickPaper = document.getElementById('js-playerPick_paper'),
     pickScissors = document.getElementById('js-playerPick_scissors');
@@ -12,7 +11,7 @@ pickRock.addEventListener('click', function() { playerPick('rock'); });
 pickPaper.addEventListener('click', function() { playerPick('paper'); });
 pickScissors.addEventListener('click', function() { playerPick('scissors'); });
 
-// Game's logic
+// GAME'S LOGIC
 var gameState = 'notStarted',  // started  // ended
     player = {
         name: '',
@@ -35,7 +34,9 @@ function setGameElements() {
             break;
         case 'ended':
             newGameBtn.innerText = 'Once again';
+            /* falls through */
         case 'notStarted':
+            /* falls through */
         default:
             newGameElem.style.display = 'block';
             pickElem.style.display = 'none';
@@ -51,7 +52,7 @@ var playerPointsElem = document.getElementById('js-playerPoints'),
 
 function newGame() {
     player.name = prompt('Please enter your name', 'player\'s name');
-    if (player.name) {
+    if (player.name && (player.name != 'player\'s name')) {
         player.score = computer.score = 0;
         gameState = 'started';
         setGameElements();
@@ -60,3 +61,26 @@ function newGame() {
         // setGamePoints();  // This function has not been created yet
     }
 }
+
+function playerPick(playerPick) {
+    console.log(playerPick);
+}
+
+function getComputerPick() {
+    var possiblePicks = ['rock', 'paper', 'scissors'];
+    return possiblePicks[Math.floor(Math.random()*3)];
+}
+
+var playerPickElem = document.getElementById('js-playerPick'),
+    computerPickElem = document.getElementById('js-computerPick'),
+    playerResultElem = document.getElementById('js-playerResult'),
+    computerResultElem = document.getElementById('js-computerResult');
+
+function playerPick(playerPick) {
+    var computerPick = getComputerPick();
+
+    playerPickElem.innerHTML = playerPick;
+    computerPickElem.innerHTML = computerPick;
+}
+
+
