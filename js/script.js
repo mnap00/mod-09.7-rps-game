@@ -31,6 +31,7 @@ function setGameElements() {
             newGameElem.style.display = 'none';
             pickElem.style.display = 'block';
             resultsElem.style.display = 'block';
+            checkDisplayWinner();
             break;
         case 'ended':
             newGameBtn.innerText = 'Once again';
@@ -113,6 +114,12 @@ function checkRoundWinner(playerPick, computerPick) {
 function setGamePoints() {
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
+}
+
+function checkDisplayWinner() {
+    if (newGameElem.childNodes.length == 4) {
+        newGameElem.removeChild(newGameElem.childNodes[3]);
+    }
 }
 
 function checkGameWinner() {
