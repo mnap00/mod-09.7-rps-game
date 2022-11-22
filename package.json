@@ -33,7 +33,7 @@
   "homepage": "https://github.com/mnap00/mod-09.7-rps-game#readme",
   "devDependencies": {
     "autoprefixer-cli": "^1.0.0",
-    "browser-sync": "^2.24.7",
+    "browser-sync": "^2.27.10",
     "globstar": "^1.0.0",
     "html-validate": "^0.10.0",
     "jshint": "^2.9.6",
